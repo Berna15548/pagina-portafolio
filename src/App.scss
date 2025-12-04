@@ -12,10 +12,6 @@
   cursor: pointer !important;
 }
 
-span {
-  margin: 0 !important;
-}
-
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -53,7 +49,7 @@ span {
 }
 
 .hideResponsive{
-  @media (max-width: 720px) {
+  @media (max-width: 768px) {
     display: none!important;
   }
 }
@@ -74,20 +70,24 @@ span {
 
 /*  estilos por ID  */
 
+
+#app-container{
+  position: relative!important;
+  z-index: 1;
+}
+
 #sobre-mi-container{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 1rem;
   padding-top: 90px;
-
 }
 
 #sobre-mi-container .cuadro-sobremi {
   flex: 0 1 calc(50% - 5rem);
   height: 350px;
   box-sizing: border-box;
-  background-color: white;
   border-radius: 1rem;
 }
 @media (max-width: 768px) {
@@ -119,11 +119,6 @@ span {
     padding: 10px;
     margin: 0;
   }
-}
-
-
-
-#app-container {
 }
 
 #proyectos-container{
@@ -195,26 +190,27 @@ span {
 }
 
 #inicio-container {
+  z-index: 10!important;
   min-height: 100vh;
 }
 
 #espaciador-top-inicio{
   top: 0;
-  height: 80px;
+  height: 75px;
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     height: 75px;
   }
 }
 
 
-
 #div-background-inicio {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 80px) ;
+  height: calc(100vh - 75px) ;
   background-image: url('../src/assets/iniciobg.webp');
   background-size: cover;
   background-position: center;
@@ -248,7 +244,7 @@ span {
 
   &::before {
     content: "";
-    position: absolute;
+    position: absolute!important;
     inset: 0;
     pointer-events: none;
     background: rgba(0,0,0,1);
@@ -442,3 +438,5 @@ span {
     padding: 10px 0;
   }
 }
+
+

@@ -13,7 +13,7 @@ const SobreMi = () => {
                 <div className="overflow">
                     <p>
                         {`Buenas tardes, soy Werner Lange y me dedico al diseño y desarrollo web.
-                    Tengo 30 años de edad, soy licenciado en Administración de Empresas egresado de la Universidad Nacional de San Antonio de Areco.
+                    Tengo 29 años de edad, soy licenciado en Administración de Empresas egresado de la Universidad Nacional de San Antonio de Areco.
                     Finalisé el curso de programación dictado por el IPFL (duración de un año), en el cual se desarrollaron los siguientes módulos:
 
                     - Metodología para el desarrollo de software
