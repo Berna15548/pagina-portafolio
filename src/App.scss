@@ -14,7 +14,7 @@
 
 span {
   margin: 0 !important;
-} /*mantine le pone margen a los span dentro de etiquetas*/
+}
 
 .logo {
   height: 6em;
@@ -52,7 +52,25 @@ span {
   color: #888;
 }
 
+.hideResponsive{
+  @media (max-width: 720px) {
+    display: none!important;
+  }
+}
 
+.inner-button {
+  width: 220px;
+  display: flex;
+  font-size: larger;
+  flex-direction: row;
+  justify-content: space-between;
+  text-shadow:
+          1px 1px 5px rgba(0, 0, 0, 0.81),
+          -1px 1px 5px rgba(0, 0, 0, 0.78),
+          1px -1px 5px rgba(255, 255, 255, 0.74),
+          -1px -1px 5px rgba(255, 255, 255, 0.73);
+
+}
 
 /*  estilos por ID  */
 
@@ -103,6 +121,8 @@ span {
   }
 }
 
+
+
 #app-container {
 }
 
@@ -123,9 +143,25 @@ span {
   justify-content: center;
   padding: 20px 8%;
 
+
   .mantine-Button-root {
     overflow: visible;
     background-color: transparent;
+  }
+}
+
+#nav-links{
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(150, 150, 255, 0.7) !important;
+
+  .mantine-Button-inner{
+    width: 100%;
+    border-radius: 15px;
+    height: fit-content;
+    padding: 10px;
+    margin-top: 10px;
+    border-bottom: 2px solid white;
   }
 }
 
@@ -148,6 +184,14 @@ span {
     padding-right: clamp(5px, 1vw, 10px);
   }
 
+}
+
+#nav-flex-pc{
+  @extend #nav-flex;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 #inicio-container {
@@ -257,7 +301,6 @@ span {
   }
 }
 
-/* WhatsApp */
 .badge-whatsapp {
   @extend .badge-base;
 
@@ -272,7 +315,6 @@ span {
   }
 }
 
-/* Gmail */
 .badge-email {
   @extend .badge-base;
 
@@ -287,7 +329,6 @@ span {
   }
 }
 
-/* GitHub violeta */
 .badge-github {
   @extend .badge-base;
 
@@ -322,16 +363,12 @@ span {
   transform: translate(-50%, -50%);
   color: white;
   cursor: pointer;
-
-  // Tamaño base + responsive (puedes hacerlo tan grande como quieras)
   width: 160px;
   height: 160px;
-
   opacity: 0;
   animation: crecerYbajar 5s infinite ease-in-out;
 }
 
-// Delays para que aparezca una sola a la vez
 .flecha-libre:nth-child(1) { animation-delay: 0s; }
 .flecha-libre:nth-child(2) { animation-delay: 1.6s; }
 .flecha-libre:nth-child(3) { animation-delay: 3.2s; }
@@ -356,5 +393,52 @@ span {
   100% {
     opacity: 0;
     transform: translate(-50%, 60px) scale(0.5);
+  }
+}
+/*================== =================================*/
+
+#nav-links {
+  display: none;
+  gap: 10px;
+
+}
+
+#hamburger-icon {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  #hamburger-icon {
+    display: block;
+    cursor: pointer;
+    z-index: 1001;
+    color: white;
+    scale: 2.2;
+    margin-left: 5%;
+  }
+
+  #nav-bar-container{
+    padding: 0 8%;
+    height: 75px;
+  }
+
+  #nav-links {
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+    background-color: white;
+  }
+
+  #nav-links.menu-movil-activo {
+    height: 250px;
+    padding: 10px 0;
   }
 }
