@@ -68,6 +68,55 @@
 
 }
 
+#skills{
+  height: 100%;
+  overflow: visible!important;
+}
+
+
+
+.skills-badge {
+  display: flex;
+  flex-wrap: wrap; // permite varias filas
+  gap: 10px;
+  justify-content: space-around;
+
+
+  > .mantine-Badge-root {
+    display: flex;
+    align-items: center;
+    flex: 0 0 calc(20% - 10px); // máximo 5 por fila, restando gap
+    height: 50px;
+    padding: 0.5rem;
+    border-radius: 12px;
+    background-color: #f0f0f0;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    svg, i {
+      margin-right: 0; // icono siempre visible
+      flex-shrink: 0;
+    }
+
+    span {
+      margin-left: 10px;
+      white-space: nowrap;
+      opacity: 0; // texto oculto al inicio
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+      width: auto; // se expande para mostrar texto
+      padding: 0.5rem 1rem;
+
+      span {
+        opacity: 1; // texto visible
+      }
+    }
+  }
+}
+
 /*  estilos por ID  */
 
 
@@ -84,28 +133,59 @@
   padding-top: 90px;
 }
 
+
 #sobre-mi-container .cuadro-sobremi {
   flex: 0 1 calc(50% - 5rem);
   height: 350px;
   box-sizing: border-box;
-  border-radius: 1rem;
+  border-radius: 5px;
 }
 @media (max-width: 768px) {
   #sobre-mi-container .cuadro-sobremi {
-    flex: 0 1 90%;
+    flex: 0 1 100%;
     height: 500px;
   }
 }
 
-.overflow {
+
+
+.p-overflow::-webkit-scrollbar {
+  background-color: transparent!important;
+  width: 10px;
+}
+
+.p-overflow::-webkit-scrollbar-thumb {
+  background: linear-gradient(4180deg,
+          #652de4 16.667%,
+          #f25eff 50.000%,
+          #ffc5ff 100.000%
+  );
+
+  border-radius: 10px;
+}
+
+.p-overflow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
   height: 100%;
   width: 100%;
   overflow: auto;
-  scrollbar-width: thin;
+  font-size: medium;
+  font-family: 'Georgia', sans-serif;
+  background-color: #ffffff;
+  padding: 0 3%;
+
+  h3{
+    text-align: left;
+    color: rgba(1, 2, 72, 0.87);
+  }
+
+
 }
 
 .cuadro-sobremi {
-  overflow: hidden;
 
   .mantine-Card-root {
     width: 200px;
@@ -127,7 +207,12 @@
 
 
 #nav-bar-container{
-  background-color: #03336b;
+  background: linear-gradient(
+          70deg,
+          #1a024b 16.667%,
+          #8822ab 50.000%,
+          #1a024b 100.000%
+  );
   position: fixed;
   top: 0;
   left: 0;
@@ -148,7 +233,7 @@
 #nav-links{
   justify-content: space-around;
   align-items: center;
-  background-color: rgba(150, 150, 255, 0.7) !important;
+  background-color: rgba(8, 134, 71, 0.92) !important;
 
   .mantine-Button-inner{
     width: 100%;
