@@ -17,10 +17,12 @@
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
+
+  &:hover{
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -89,6 +91,7 @@
   h3{
     color: white;
     font-family: 'Orbitron', sans-serif ;
+    pointer-events: none;
   }
 }
 
@@ -101,7 +104,9 @@
   gap: 3rem;
 
   @media (max-width: 768px) {
-    width: 100%
+    width: 100%;
+    min-height: fit-content;
+    max-height: 80vh;
   }
 }
 
@@ -143,13 +148,13 @@
 
 
     &:hover {
+      width: 300px;
+
       span{
         width: 200px!important;
         transition: width 0.5s ease;
         font-size: larger;
       }
-
-      width: 300px;
     }
   }
 }
@@ -160,11 +165,21 @@
     > .mantine-Badge-root {
 
       &:focus {
-        background-color: green !important;
+        height: 100px;
+        background-color: rgba(0, 0, 0, 0.81) !important;
         z-index: 100!important;
         overflow: visible !important;
         position: absolute;
         transform: translate(0%, 50%) !important;
+
+        span{
+          scale: 1.5;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100% !important;
+
+        }
       }
     }
   }
@@ -177,6 +192,8 @@
 #app-container{
   position: relative!important;
   z-index: 1;
+  overflow-x: hidden;
+
 }
 
 #sobre-mi-container{
@@ -212,7 +229,8 @@
 @media (max-width: 768px) {
   #sobre-mi-container .cuadro-sobremi {
     flex: 0 1 100%;
-    height: 500px;
+    min-height: fit-content;
+    max-height: 80vh;
   }
 }
 
@@ -233,9 +251,18 @@
   h3{
     text-align: left;
     color: rgba(1, 2, 72, 0.87);
+    pointer-events: none;
+  }
+
+  p{
+    pointer-events: none;
   }
 
 
+ @media (max-width: 768px) {
+   height: fit-content;
+   max-height: 65vh;
+ }
 }
 
 .p-overflow::-webkit-scrollbar {
@@ -257,10 +284,18 @@
   width: 500px;
   height: 350px;
   text-align: center;
+  transition: 0.3s ease-in-out;
+  margin-bottom: 30px;
 
   > * {
     width: 90%; // todos los hijos del contenedor
   }
+
+  /*
+  &:hover{
+    transform: scale(1.1);
+  }
+  */
 
   @media (max-width: 768px) {
     width: 100%;
@@ -268,16 +303,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+/*    &:hover{
+      transform: scale(1);
+    }*/
   }
+
+
 }
 
 .card-certificados {
   width: 100%;
   height: 350px;
-  background-color: red;
-  color: white;
   font-size: 24px;
+  padding: 0!important;
   border-radius: 12px;
+  cursor: pointer;
 }
 
 
@@ -429,11 +470,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 75px) ;
   background-image: url('../src/assets/iniciobg.webp');
   background-size: cover;
   background-position: center;
   color: rgb(217, 246, 242);
+
+  mask-image: linear-gradient(to bottom, black calc(100% - 40px), transparent 100%);
+  height: calc(100vh - 75px + 40px) ; //sumo los px del borde degradado
 
   p{
     pointer-events: none;

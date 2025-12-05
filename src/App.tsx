@@ -1,54 +1,88 @@
-import './App.scss'
+import './App.scss';
 import SobreMi from "./components/SobreMi.tsx";
 import NavBar from "./components/NavBar.tsx";
 import Inicio from "./components/Inicio.tsx";
 import Proyectos from "./components/Proyectos.tsx";
 import Contacto from "./components/Contacto.tsx";
-import ParticlesComponent from "./components/ParticlesComponent.tsx";
-import {useState} from "react";
-import {CssLoader} from "./components/CssLoader.tsx";
-import {useEffect} from "react";
+import ParticlesComponent from "./components/subComponents/ParticlesComponent.tsx";
+import { useState, useEffect } from "react";
+import { CssLoader } from "./components/CssLoader.tsx";
 
 function App() {
-
     const [loading, setLoading] = useState(true);
 
-    // Simular tiempo de carga
     useEffect(() => {
-        const timer = setTimeout(() => setLoading(false), 2000); // 2s de loader
-        return () => clearTimeout(timer);
+        const MINIMUM_LOADING_TIME = 2000; // tiempo minimo de laoding
+        const startTime = Date.now();
+
+        const handleLoad = () => {
+            const elapsedTime = Date.now() - startTime;
+
+            if (elapsedTime >= MINIMUM_LOADING_TIME) {
+                setLoading(false);
+            } else {
+                const remainingTime = MINIMUM_LOADING_TIME - elapsedTime;
+                const timer = setTimeout(() => {
+                    setLoading(false);
+                }, remainingTime);
+
+                return () => clearTimeout(timer);
+            }
+        };
+
+        if (document.readyState === 'complete') {
+            handleLoad();
+            return;
+        }
+        
+        window.addEventListener('load', handleLoad);
+        
+        //tiempo maximo de loading
+        const fallbackTimer = setTimeout(() => {
+            setLoading(false);
+        }, 5000);
+
+        return () => {
+            window.removeEventListener('load', handleLoad);
+            clearTimeout(fallbackTimer);
+        };
     }, []);
-    /*  ====== pantalla de carga   ========    */
+
+    /* ====== Pantalla de carga ====== */
     if (loading) {
         return (
-            <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: '100vh',
-                backgroundColor: "black",
-                width: "100vw",
-            }}>
-                <CssLoader  />
+            <div
+                style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100vw',
+                    height: '100vh',
+                    backgroundColor: '#000',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    zIndex: 9999,
+                }}
+            >
+                <CssLoader />
             </div>
         );
     }
-    
-    /*      ========        app         ========*/
+
+    /* ====== App principal ====== */
     return (
         <>
             <div id="app-container">
-                <NavBar/>
-                <Inicio/>
-                <SobreMi/>
-                <Proyectos/>
-                <Contacto/>
+                <NavBar />
+                <Inicio />
+                <SobreMi />
+                <Proyectos />
+                <Contacto />
             </div>
-            <ParticlesComponent/>
-
+            <ParticlesComponent />
         </>
-
-    )
+    );
 }
 
-export default App
+export default App;

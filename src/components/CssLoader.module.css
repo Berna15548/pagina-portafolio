@@ -1,6 +1,6 @@
 :root {
     --loader-size: 150px;
-    --loader-color: #e0e0e0; /* azul, o el color que quieras */
+    --loader-color: #bfc5c0; /* azul, o el color que quieras */
 }
 
 @keyframes loader-animation {
@@ -19,18 +19,19 @@
         animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
     }
 }
+/* https://grabient.com/HQFgrCA0oGwIzRPRAmFi4HZEAYDM0KAnAByFE7RxhGQzAphh0Mjb0qYLB5HZygiUYFyg4gA?style=angularSwatches&steps=13 */
+
 
 .loader {
     display: inline-block;
     width: var(--loader-size);
     height: var(--loader-size);
     border-radius: 50%;
-    border: 4px ridge var(--loader-color);
-    background: linear-gradient(
-            0deg,
-            #f6d1e8 16.667%,
-            #966e8b 50.000%,
-            #252424 100.000%
+    background: conic-gradient(
+
+            #fafafa 16.667%,
+            #9b9b9b 50.000%,
+            #212121 100.000%
     );
     animation: loader-animation 3.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }

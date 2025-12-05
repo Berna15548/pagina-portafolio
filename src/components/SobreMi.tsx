@@ -1,8 +1,8 @@
 
 import '../App.scss';
-import CardsDeck from "./CardsDeck.tsx";
-import CoverLetter from "./CoverLetter.tsx";
-import Skills from "./Skills.tsx";
+import CardsDeck from "./subComponents/CardsDeck.tsx";
+import CoverLetter from "./subComponents/CoverLetter.tsx";
+import Skills from "./subComponents/Skills.tsx";
 
 
 const SobreMi = () => {
