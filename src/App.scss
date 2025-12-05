@@ -68,51 +68,88 @@
 
 }
 
+.skill-icon{
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+
+  svg{
+    width: 35px;
+    height: 35px;
+  }
+}
+
 #skills{
   height: 100%;
   overflow: visible!important;
+
+  h3{
+    color: white;
+    font-family: 'Orbitron', sans-serif ;
+  }
 }
 
+.columna-sobremi{
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  height: fit-content;
+  justify-content: flex-start;
+  gap: 3rem;
 
+  @media (max-width: 768px) {
+    width: 100%
+  }
+}
 
 .skills-badge {
   display: flex;
-  flex-wrap: wrap; // permite varias filas
+  flex-wrap: wrap;
   gap: 10px;
   justify-content: space-around;
-
 
   > .mantine-Badge-root {
     display: flex;
     align-items: center;
-    flex: 0 0 calc(20% - 10px); // máximo 5 por fila, restando gap
+    justify-content: center;
+    flex: 0 0 calc(25%); // máximo 5 por fila, restando gap
     height: 50px;
-    padding: 0.5rem;
     border-radius: 12px;
-    background-color: #f0f0f0;
-    color: #333;
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.30);
+    color: white!important;
+    padding: 0 !important;
     cursor: pointer;
     transition: all 0.3s ease;
 
     svg, i {
-      margin-right: 0; // icono siempre visible
       flex-shrink: 0;
     }
 
     span {
+      padding: 0 5px;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+      width: 45px;
       margin-left: 10px;
       white-space: nowrap;
-      opacity: 0; // texto oculto al inicio
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease, width 0.5s ease;
     }
 
-    &:hover {
-      width: auto; // se expande para mostrar texto
-      padding: 0.5rem 1rem;
 
-      span {
-        opacity: 1; // texto visible
+    &:hover {
+      span{
+        width: 200px!important;
+        transition: width 0.5s ease;
+        font-size: larger;
       }
+
+      width: 300px;
     }
   }
 }
@@ -127,11 +164,26 @@
 
 #sobre-mi-container{
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 1rem;
   padding-top: 90px;
+  height: fit-content!important;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    > .columna-sobremi {
+      order: -1; // subir al principio
+    }
+
+    > .skills-wrapper {
+      order: 1; // asegurar que quede después
+    }
+  }
 }
+
 
 
 #sobre-mi-container .cuadro-sobremi {
@@ -147,11 +199,31 @@
   }
 }
 
+.p-overflow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  height: 350px;
+  width: 100%;
+  overflow: auto;
+  font-size: medium;
+  font-family: 'Georgia', sans-serif;
+  background-color: #ffffff;
+  padding: 0 3%;
+  border-radius: 8px;
 
+  h3{
+    text-align: left;
+    color: rgba(1, 2, 72, 0.87);
+  }
+
+
+}
 
 .p-overflow::-webkit-scrollbar {
   background-color: transparent!important;
-  width: 10px;
+
 }
 
 .p-overflow::-webkit-scrollbar-thumb {
@@ -164,26 +236,33 @@
   border-radius: 10px;
 }
 
-.p-overflow {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-  font-size: medium;
-  font-family: 'Georgia', sans-serif;
-  background-color: #ffffff;
-  padding: 0 3%;
+#cards-container{
+  width: 500px;
+  height: 350px;
+  text-align: center;
 
-  h3{
-    text-align: left;
-    color: rgba(1, 2, 72, 0.87);
+  > * {
+    width: 90%; // todos los hijos del contenedor
   }
 
-
+  @media (max-width: 768px) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
+
+.card-certificados {
+  width: 100%;
+  height: 350px;
+  background-color: red;
+  color: white;
+  font-size: 24px;
+  border-radius: 12px;
+}
+
 
 .cuadro-sobremi {
 
@@ -250,7 +329,6 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  width: 40%;
   font-family: 'Space Grotesk', sans-serif;
 
 
