@@ -115,7 +115,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 0 0 calc(25%); // máximo 5 por fila, restando gap
+    flex: 0 0 calc(25%); // máximo 5 por fila
     height: 50px;
     border-radius: 12px;
     backdrop-filter: blur(3px);
@@ -153,6 +153,23 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .skills-badge {
+
+    > .mantine-Badge-root {
+
+      &:focus {
+        background-color: green !important;
+        z-index: 100!important;
+        overflow: visible !important;
+        position: absolute;
+        transform: translate(0%, 50%) !important;
+      }
+    }
+  }
+}
+
 
 /*  estilos por ID  */
 
@@ -285,12 +302,12 @@
 }
 
 
-#nav-bar-container{
+#nav-bar-container {
   background: linear-gradient(
-          70deg,
-          #1a024b 16.667%,
-          #8822ab 50.000%,
-          #1a024b 100.000%
+                  70deg,
+                  #1a024b 16.667%,
+                  #8822ab 50%,
+                  #1a024b 100%
   );
   position: fixed;
   top: 0;
@@ -302,10 +319,49 @@
   justify-content: center;
   padding: 20px 8%;
 
-
   .mantine-Button-root {
     overflow: visible;
     background-color: transparent;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    position: relative;
+    padding-bottom: 8px;
+
+    &:hover {
+      border-color: transparent !important;
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    &:focus,
+    &:focus-visible,
+    &:active {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    &::before {
+      display: none !important;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: white;
+      transition: width 0.35s ease, left 0.35s ease;
+      transform: translateX(-50%);
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      width: 70%;
+      left: 50%;
+    }
   }
 }
 
@@ -601,5 +657,4 @@
     padding: 10px 0;
   }
 }
-
 
