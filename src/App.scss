@@ -66,9 +66,16 @@
           1px 1px 5px rgba(0, 0, 0, 0.81),
           -1px 1px 5px rgba(0, 0, 0, 0.78),
           1px -1px 5px rgba(255, 255, 255, 0.74),
-          -1px -1px 5px rgba(255, 255, 255, 0.73);
-
+          -1px -1px 5px rgba(255, 255, 255, 0.73)
+;
 }
+
+.titulo-card {
+  font-weight: 400;
+  font-family: Space Grotesk, sans-serif;
+  color: #000054;
+  text-shadow: 1px 1px 3px rgba(78, 78, 129, 0.87);
+  }
 
 .skill-icon{
   width: 35px;
@@ -178,7 +185,7 @@
           justify-content: center;
           align-items: center;
           width: 100% !important;
-
+          transition: all 0.5s ease;
         }
       }
     }
@@ -188,12 +195,16 @@
 
 /*  estilos por ID  */
 
+#particles-inicio > canvas {
+  opacity: 0.7 !important;
+  filter: blur(3px);
+}
+
 
 #app-container{
   position: relative!important;
   z-index: 1;
   overflow-x: hidden;
-
 }
 
 #sobre-mi-container{
@@ -308,9 +319,40 @@
       transform: scale(1);
     }*/
   }
-
-
 }
+.modal-card {
+  padding-top: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw!important;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.esconder-boton-en-movil{
+
+  @media (max-width: 768px) {
+    display: none!important;
+  }
+}
+
+.boton-modal-card {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
 
 .card-certificados {
   width: 100%;

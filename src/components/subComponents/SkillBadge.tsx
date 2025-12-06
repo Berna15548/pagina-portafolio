@@ -1,18 +1,34 @@
 import { Badge } from "@mantine/core";
+import {useState} from "react";
 
 // @ts-ignore
 const SkillBadge = ({ icon: Icon, label, link }) => {
-    const timeOut = (e) => {
-        setTimeout(() => e.currentTarget.blur(), 400);
+
+    const timeOut = (e: React.FocusEvent<HTMLDivElement>) => {
+        const elemento = e.currentTarget; 
+        setTimeout(() => {
+            elemento.blur(); 
+        }, 2000);
     };
 
-    
-    const isMobile = window.matchMedia("(max-width: 768px)").matches; // esto es para desactivar los links en pantalla de celular
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-    const handleClick = () => {
+
+    const [contador, setContador] = useState(0);
+    
+    
+    
+
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        console.log("badge clikeado" + contador)
+        setContador(prev => prev + 1);
+        
+        
+        
         if (!isMobile && link) {
             window.open(link, "_blank", "noopener,noreferrer");
         }
+        e.currentTarget.blur();
     };
 
     return (

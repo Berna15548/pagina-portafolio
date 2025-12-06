@@ -4,9 +4,10 @@ import NavBar from "./components/NavBar.tsx";
 import Inicio from "./components/Inicio.tsx";
 import Proyectos from "./components/Proyectos.tsx";
 import Contacto from "./components/Contacto.tsx";
-import ParticlesComponent from "./components/subComponents/ParticlesComponent.tsx";
+import ParticlesComponent from "./components/ParticlesComponent.tsx";
 import { useState, useEffect } from "react";
 import { CssLoader } from "./components/CssLoader.tsx";
+import ParticlesInitializer from "./components/ParticlesInitializer.tsx";
 
 function App() {
     const [loading, setLoading] = useState(true);
@@ -72,7 +73,9 @@ function App() {
 
     /* ====== App principal ====== */
     return (
-        <>
+        <div style={{backgroundColor: "#4c4cd0"}}>
+            <ParticlesInitializer />
+            <ParticlesComponent id="particles-global" />
             <div id="app-container">
                 <NavBar />
                 <Inicio />
@@ -80,8 +83,9 @@ function App() {
                 <Proyectos />
                 <Contacto />
             </div>
-            <ParticlesComponent />
-        </>
+
+
+        </div>
     );
 }
 

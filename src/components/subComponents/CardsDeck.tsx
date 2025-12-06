@@ -1,23 +1,33 @@
-import { Card, Text, Button, Group } from "@mantine/core";
+import { Card, Button, Group } from "@mantine/core";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { SlControlRewind, SlControlForward } from "react-icons/sl";
+import {useEffect} from "react";
 
 const cardsData = [
-    { title: "Lic en adm", image: "https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg" },
-    { title: "Cert curso programación", image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg" },
-    { title: "Cert Excel", image: "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg" },
-    { title: "Cert curso fontan", image: "https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg" },
-    { title: "Algún cert de Australia", image: "https://images.pexels.com/photos/2908178/pexels-photo-2908178.jpeg" },
-    { title: "IELTS", image: "https://images.pexels.com/photos/159711/pexels-photo-159711.jpeg" },
+    { title: "Lic en adm", image: "https://www.educativa.com/wp-content/uploads/2020/09/certificado-ejemplo_-1024x698.jpg" },
+    { title: "Cert curso programación", image: "https://www.educativa.com/wp-content/uploads/2020/09/certificado-01-1.jpg" },
+    { title: "Cert Excel", image: "https://www.argentina.gob.ar/sites/default/files/certificado_de_desplazamiento_al_lugar_de_trabajo.jpg" },
+    { title: "Cert curso fontan", image: "https://digitalchubut.com/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-07-at-17.09.04.jpeg" },
+    { title: "Algún cert de Australia", image: "https://edit.org/img/blog/n/jdi-1024-disenos-editables-para-diplomas-y-certificados.webp" },
+    { title: "IELTS", image: "https://www.lu4aa.org/wp/wp-content/uploads/2017/05/cert-tpa.jpg" },
 ];
 
 const CardDeck = () => {
     const [index, setIndex] = useState(0);
     const [modalCard, setModalCard] = useState<number | null>(null);
+    useEffect(() => {
+        cardsData.forEach(card => {
+            const img = new Image();
+            img.src = card.image;
+        });
+    }, []);
 
     const nextCard = () => setIndex((prev) => (prev + 1) % cardsData.length);
     const prevCard = () => setIndex((prev) => (prev - 1 + cardsData.length) % cardsData.length);
+
+    const nextModalCard = () => setModalCard((prev) => (prev! + 1) % cardsData.length);
+    const prevModalCard = () => setModalCard((prev) => (prev! - 1 + cardsData.length) % cardsData.length);
 
     return (
         <div id="cards-container" style={{ textAlign: "center" }}>
@@ -36,7 +46,7 @@ const CardDeck = () => {
                     initial={{ x: 200, rotate: 10, opacity: 0 }}
                     animate={{ x: 0, rotate: 0, opacity: 1 }}
                     exit={{ x: -200, rotate: -10, opacity: 0 }}
-                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                    transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
                 >
                     <Card
                         shadow="sm"
@@ -45,42 +55,81 @@ const CardDeck = () => {
                         style={{ cursor: "pointer" }}
                         onClick={() => setModalCard(index)}
                     >
-                        <Text>{cardsData[index].title}</Text>
+                        <div className="titulo-card" >{cardsData[index].title}</div>
                         <img
                             src={cardsData[index].image}
                             alt={cardsData[index].title}
-                            style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 12 }}
+                            style={{ width: "100%", height: "100%", objectFit: "cover", }}
                         />
                     </Card>
                 </motion.div>
             </AnimatePresence>
 
-            {/* Modal */}
+            {/*     =====       modal         ======      */}
             {modalCard !== null && (
                 <div
-                    onClick={() => setModalCard(null)}
-                    style={{
-                        position: "fixed",
-                        top: 0,
-                        left: 0,
-                        width: "100vw",
-                        height: "100vh",
-                        backgroundColor: "rgba(0,0,0,0.85)",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        zIndex: 9999,
-                        cursor: "pointer",
-                    }}
+                    className="modal-card"
+y
                 >
-                    <img
-                        src={cardsData[modalCard].image}
-                        alt={cardsData[modalCard].title}
+                    <AnimatePresence mode="wait">
+                        <motion.img
+                            key={modalCard}
+                            src={cardsData[modalCard].image}
+                            alt={cardsData[modalCard].title}
+                            initial={{ x: 200, rotate: 10, opacity: 0 }}
+                            animate={{ x: 0, rotate: 0, opacity: 1 }}
+                            exit={{ x: -200, rotate: -10, opacity: 0 }}
+                            transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
+                            style={{
+                                maxWidth: "90vw",
+                                maxHeight: "80vh",
+                                objectFit: "contain",
+                                borderRadius: 12,
+                            }}
+                        />
+                    </AnimatePresence>
+                {/*     =====       botones cambio de card          ======      */}
+                    <Button
+                        color="transparent"
+                        size="lg"
+                        radius="xl"
+                        onClick={prevModalCard}
+                        className="esconder-boton-en-movil"
                         style={{
-                            maxWidth: "95vw",
-                            maxHeight: "95vh",
-                            objectFit: "contain",
-                            borderRadius: "12px",
+                            position: "absolute",
+                            left: "20px",
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            zIndex: 1000,
+                        }}
+                    >
+                        <SlControlRewind size={32} />
+                    </Button>
+
+                    <Button
+                        color="transparent"
+                        size="lg"
+                        radius="xl"
+                        onClick={nextModalCard}
+                        className="esconder-boton-en-movil"
+                        style={{
+                            position: "absolute",
+                            right: "20px",
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            zIndex: 1000,
+                        }}
+                    >
+                        <SlControlForward size={32} />
+                    </Button>
+
+                    {/* Click afuera cierra */}
+                    <div
+                        onClick={() => setModalCard(null)}
+                        style={{
+                            position: "absolute",
+                            inset: 0,
+                            zIndex: 0,
                         }}
                     />
                 </div>
