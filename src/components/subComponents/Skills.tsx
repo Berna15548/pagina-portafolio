@@ -3,8 +3,31 @@ import { SiReact, SiAngular, SiFigma, SiJavascript, SiTypescript, SiCss3, SiSass
 import { VscVscodeInsiders } from "react-icons/vsc";
 import { faFileExcel } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState, useEffect } from "react";
 
 const Skills = () => {
+    const [activeBadge, setActiveBadge] = useState(null);
+
+    const handleBadgeClick = (label) => {
+        setActiveBadge(prevActiveBadge =>
+            prevActiveBadge === label ? null : label
+        );
+    };
+
+    useEffect(() => {
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+        if (isMobile && activeBadge) {
+            const timer = setTimeout(() => {
+                setActiveBadge(null);
+            }, 2000);
+
+            return () => clearTimeout(timer);
+        }
+
+        return () => {};
+    }, [activeBadge]);
+
     const front = [
         { icon: SiReact, label: "React", link: "https://react.dev" },
         { icon: SiAngular, label: "Angular", link: "https://angular.io" },
@@ -40,31 +63,37 @@ const Skills = () => {
             <div id="skills">
                 <h3>Herramientas de Front</h3>
                 <div className="skills-badge">
-                    {front.map((item) => <SkillBadge 
+                    {front.map((item) => <SkillBadge
                         key={item.label}
                         icon={item.icon}
                         label={item.label}
-                        link={item.link} 
+                        link={item.link}
+                        isActive={item.label === activeBadge}
+                        onClick={handleBadgeClick}
                     />)}
                 </div>
 
                 <h3>Herramientas Backend</h3>
                 <div className="skills-badge">
-                    {backend.map((item) => <SkillBadge 
+                    {backend.map((item) => <SkillBadge
                         key={item.label}
                         icon={item.icon}
                         label={item.label}
-                        link={item.link} 
+                        link={item.link}
+                        isActive={item.label === activeBadge}
+                        onClick={handleBadgeClick}
                     />)}
                 </div>
 
                 <h3>Herramientas Auxiliares</h3>
                 <div className="skills-badge">
-                    {aux.map((item) => <SkillBadge 
+                    {aux.map((item) => <SkillBadge
                         key={item.label}
                         icon={item.icon}
                         label={item.label}
-                        link={item.link} 
+                        link={item.link}
+                        isActive={item.label === activeBadge}
+                        onClick={handleBadgeClick}
                     />)}
                 </div>
             </div>
