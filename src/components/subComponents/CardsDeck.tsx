@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { SlControlRewind, SlControlForward } from "react-icons/sl";
 import {useEffect} from "react";
+import {FaRegCircle} from "react-icons/fa";
 
 const cardsData = [
     { title: "Lic en adm", image: "https://www.educativa.com/wp-content/uploads/2020/09/certificado-ejemplo_-1024x698.jpg" },
@@ -31,10 +32,11 @@ const CardDeck = () => {
 
     return (
         <div id="cards-container" style={{ textAlign: "center" }}>
-            <Group mt="md" style={{ display: "flex", justifyContent: "space-around" }}>
+            <Group mt="md" id="botonera-certificados">
                 <Button color="transparent" size="lg" radius="xl" onClick={prevCard}>
                     <SlControlRewind size={32} />
                 </Button>
+                <FaRegCircle /><FaRegCircle /><FaRegCircle /><FaRegCircle /><FaRegCircle />
                 <Button color="transparent" size="lg" radius="xl" onClick={nextCard}>
                     <SlControlForward size={32} />
                 </Button>
@@ -66,6 +68,7 @@ const CardDeck = () => {
             </AnimatePresence>
 
             {/*     =====       modal         ======      */}
+
             {modalCard !== null && (
                 <div
                     className="modal-card"

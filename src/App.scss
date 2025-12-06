@@ -203,6 +203,23 @@
   filter: blur(3px);
 }
 
+#div-circulitos{
+
+
+}
+
+#botonera-certificados{
+  display: flex;
+  justify-content: space-around;
+  > svg{
+    transition: all 0.3s ease;
+    &:hover{
+      scale: 2.5;
+      transition: all 0.3s ease;
+    }
+  }
+
+}
 
 #app-container{
   position: relative!important;
@@ -377,6 +394,7 @@
 #proyectos-container{
   padding-top: 90px;
 }
+
 
 
 #nav-bar-container {
