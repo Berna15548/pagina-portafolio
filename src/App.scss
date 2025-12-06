@@ -75,7 +75,7 @@
   font-family: Space Grotesk, sans-serif;
   color: #000054;
   text-shadow: 1px 1px 3px rgba(78, 78, 129, 0.87);
-  }
+}
 
 .skill-icon{
   width: 35px;
@@ -171,7 +171,8 @@
 
     > .mantine-Badge-root {
 
-      &:focus {
+      // CORRECCIÓN: Usamos '&.badge-activo' para seleccionar el mismo elemento con la clase
+      &.badge-activo {
         height: 100px;
         background-color: rgba(0, 0, 0, 0.81) !important;
         z-index: 100!important;
@@ -188,12 +189,14 @@
           transition: all 0.5s ease;
         }
       }
+
+      // La regla anterior `:focus` ha sido eliminada.
     }
   }
 }
 
 
-/*  estilos por ID  */
+/* estilos por ID  */
 
 #particles-inicio > canvas {
   opacity: 0.7 !important;
@@ -270,10 +273,10 @@
   }
 
 
- @media (max-width: 768px) {
-   height: fit-content;
-   max-height: 65vh;
- }
+  @media (max-width: 768px) {
+    height: fit-content;
+    max-height: 65vh;
+  }
 }
 
 .p-overflow::-webkit-scrollbar {
@@ -302,12 +305,6 @@
     width: 90%; // todos los hijos del contenedor
   }
 
-  /*
-  &:hover{
-    transform: scale(1.1);
-  }
-  */
-
   @media (max-width: 768px) {
     width: 100%;
     display: flex;
@@ -315,9 +312,6 @@
     justify-content: center;
     align-items: center;
 
-/*    &:hover{
-      transform: scale(1);
-    }*/
   }
 }
 .modal-card {
@@ -582,7 +576,7 @@
   align-items: center;
 }
 
-/*  BADGES  ================================== */
+/* BADGES  ================================== */
 
 .badge-base {
   border: 3px solid black;
@@ -742,4 +736,3 @@
     padding: 10px 0;
   }
 }
-
