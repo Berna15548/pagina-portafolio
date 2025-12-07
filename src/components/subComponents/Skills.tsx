@@ -4,6 +4,7 @@ import { VscVscodeInsiders } from "react-icons/vsc";
 import { faFileExcel } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const Skills = () => {
     const [activeBadge, setActiveBadge] = useState(null);
@@ -60,7 +61,23 @@ const Skills = () => {
 
     return (
         <div className="cuadro-sobremi" style={{ height: "fit-content" }}>
-            <div id="skills">
+
+
+            <motion.div
+                id="skills"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "circInOut" }}
+            >
+
+
+
+
+
+
+
+
                 <h3>Herramientas de Front</h3>
                 <div className="skills-badge">
                     {front.map((item) => <SkillBadge
@@ -96,7 +113,21 @@ const Skills = () => {
                         onClick={handleBadgeClick}
                     />)}
                 </div>
-            </div>
+            </motion.div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
     );
 };

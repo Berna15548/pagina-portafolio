@@ -14,7 +14,7 @@ const cardsData = [
     { title: "IELTS", image: "https://www.lu4aa.org/wp/wp-content/uploads/2017/05/cert-tpa.jpg" },
 ];
 
-const CardDeck = () => {
+const Certificados = () => {
     const [index, setIndex] = useState(0);
     const [modalCard, setModalCard] = useState<number | null>(null);
     useEffect(() => {
@@ -72,7 +72,7 @@ const CardDeck = () => {
             {modalCard !== null && (
                 <div
                     className="modal-card"
-y
+
                 >
                     <AnimatePresence mode="wait">
                         <motion.img
@@ -126,7 +126,6 @@ y
                         <SlControlForward size={32} />
                     </Button>
 
-                    {/* Click afuera cierra */}
                     <div
                         onClick={() => setModalCard(null)}
                         style={{
@@ -141,4 +140,4 @@ y
     );
 };
 
-export default CardDeck;
+export default Certificados;

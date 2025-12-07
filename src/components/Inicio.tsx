@@ -1,7 +1,7 @@
 import '../App.scss'
 import BadgesInicio from "./subComponents/BadgesInicio.tsx";
 import { IconChevronDown } from '@tabler/icons-react';
-import ParticlesComponent from "./ParticlesComponent.tsx";
+import ParticlesComponent from "./Canvas/ParticlesComponent.tsx";
 
 const Inicio = () => {
 

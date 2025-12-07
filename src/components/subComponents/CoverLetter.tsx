@@ -1,10 +1,15 @@
+
+import { motion } from "framer-motion";
+
 const CoverLetter = () => {
-    
-    
-    
-    
     return (
-        <div className="cuadro-sobremi">
+        <motion.div
+            className="cuadro-sobremi"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+        >
             <div className="p-overflow">
                 <h3>Buenas tardes, soy Werner Lange y me dedico al diseño y desarrollo web.</h3>
                 <p>
@@ -20,7 +25,7 @@ const CoverLetter = () => {
                         Busco oportunidades donde pueda aplicar y expandir mis habilidades, trabajar en proyectos desafiantes y aprender todo lo posible en un ambiente laboral profesional.`}
                 </p>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

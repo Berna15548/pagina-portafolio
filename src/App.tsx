@@ -4,15 +4,17 @@ import NavBar from "./components/NavBar.tsx";
 import Inicio from "./components/Inicio.tsx";
 import Proyectos from "./components/Proyectos.tsx";
 import Contacto from "./components/Contacto.tsx";
-import ParticlesComponent from "./components/ParticlesComponent.tsx";
+import ParticlesComponent from "./components/Canvas/ParticlesComponent.tsx";
 import { useState, useEffect } from "react";
-import { CssLoader } from "./components/CssLoader.tsx";
-import ParticlesInitializer from "./components/ParticlesInitializer.tsx";
+import { CssLoader } from "./components/Canvas/CssLoader.tsx";
+import ParticlesInitializer from "./components/Canvas/ParticlesInitializer.tsx";
+
 
 function App() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+
         const MINIMUM_LOADING_TIME = 2000; // tiempo minimo de laoding
         const startTime = Date.now();
 

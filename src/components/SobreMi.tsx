@@ -1,6 +1,6 @@
 
 import '../App.scss';
-import CardsDeck from "./subComponents/CardsDeck.tsx";
+import Certificados from "./subComponents/Certificados.tsx";
 import CoverLetter from "./subComponents/CoverLetter.tsx";
 import Skills from "./subComponents/Skills.tsx";
 
@@ -15,7 +15,7 @@ const SobreMi = () => {
             <Skills />
             <div className="columna-sobremi">
                 <CoverLetter/>
-                <CardsDeck />
+                <Certificados />
             </div>
 
 

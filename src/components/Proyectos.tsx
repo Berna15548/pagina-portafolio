@@ -16,7 +16,8 @@ const Proyectos = () => {
         speed: 300,
         slidesToShow: 1,
         slidesToScroll: 1,
-        centerMode: false,
+        centerMode: true,
+        centerPadding: "20%",
         arrows: true,
         responsive: [
             {

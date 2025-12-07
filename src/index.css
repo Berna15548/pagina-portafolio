@@ -13,16 +13,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
-body {
-  display: block; /* quita el flex centering */
-}
-
 span {
   margin: 0 !important;
 }
-
 
 a {
   font-weight: 500;
