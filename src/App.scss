@@ -110,6 +110,8 @@
   height: fit-content;
   justify-content: flex-start;
   gap: 3rem;
+  overflow: hidden;
+
 
   @media (max-width: 768px) {
     width: 100%;
@@ -128,7 +130,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 0 0 calc(25%); // máximo 5 por fila
+    flex: 0 0 calc(25%); // le da un máximo de elementos 4 por fila
     height: 50px;
     border-radius: 12px;
     backdrop-filter: blur(3px);
@@ -136,7 +138,6 @@
     color: white!important;
     padding: 0 !important;
     cursor: pointer;
-    transition: all 0.3s ease;
 
     svg, i {
       flex-shrink: 0;
@@ -187,7 +188,6 @@
           justify-content: center;
           align-items: center;
           width: 100% !important;
-          transition: all 0.5s ease;
         }
       }
 
@@ -204,19 +204,13 @@
   filter: blur(3px);
 }
 
-#div-circulitos{
-
-
-}
-
 #botonera-certificados{
   display: flex;
   justify-content: space-around;
   > svg{
-    transition: all 0.3s ease;
+
     &:hover{
       scale: 2.5;
-      transition: all 0.3s ease;
     }
   }
 
@@ -257,6 +251,7 @@
   height: 350px;
   box-sizing: border-box;
   border-radius: 5px;
+
 }
 @media (max-width: 768px) {
   #sobre-mi-container .cuadro-sobremi {
@@ -265,6 +260,7 @@
     max-height: 80vh;
   }
 }
+
 
 .p-overflow {
   display: flex;
@@ -279,6 +275,7 @@
   background-color: #ffffff;
   padding: 0 3%;
   border-radius: 8px;
+
 
   h3{
     text-align: left;
@@ -316,7 +313,9 @@
   width: 500px;
   height: 350px;
   text-align: center;
+  /*
   transition: 0.3s ease-in-out;
+  */
   margin-bottom: 30px;
 
   > * {
@@ -403,7 +402,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease;
 
     &.slick-current {
       z-index: 3;

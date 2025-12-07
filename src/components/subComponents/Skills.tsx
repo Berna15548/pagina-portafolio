@@ -59,75 +59,70 @@ const Skills = () => {
         { icon: SiGoogledocs, label: "Google Docs", link: "https://docs.google.com" },
     ];
 
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
     return (
         <div className="cuadro-sobremi" style={{ height: "fit-content" }}>
+            <div id="skills">
+                <motion.div
+                    initial={{ opacity: 0, x: -100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: isMobile, margin: "-100px" }}
+                    transition={{ duration: 0.7, ease: "linear" }}
+                >
+                    <h3>Herramientas de Front</h3>
+                    <div className="skills-badge">
+                        {front.map((item) => <SkillBadge
+                            key={item.label}
+                            icon={item.icon}
+                            label={item.label}
+                            link={item.link}
+                            isActive={item.label === activeBadge}
+                            onClick={handleBadgeClick}
+                        />)}
+                    </div>
+                </motion.div>
 
 
-            <motion.div
-                id="skills"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, margin: "-100px" }}
-                transition={{ duration: 0.8, ease: "circInOut" }}
-            >
+                <motion.div
+                    initial={{ opacity: 0, x: -100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: isMobile, margin: "-100px" }}
+                    transition={{ duration: 0.7, ease: "linear" }}
+                >
+                    <h3>Herramientas Backend</h3>
+                    <div className="skills-badge">
+                        {backend.map((item) => <SkillBadge
+                            key={item.label}
+                            icon={item.icon}
+                            label={item.label}
+                            link={item.link}
+                            isActive={item.label === activeBadge}
+                            onClick={handleBadgeClick}
+                        />)}
+                    </div>
+                </motion.div>
 
+                <motion.div 
+                    initial={{ opacity: 0, x: -100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: isMobile, margin: "-100px" }}
+                    transition={{ duration: 0.7, ease: "linear" }}
+                >
+                    <h3>Herramientas Auxiliares</h3>
+                    <div className="skills-badge">
+                        {aux.map((item) => <SkillBadge
+                            key={item.label}
+                            icon={item.icon}
+                            label={item.label}
+                            link={item.link}
+                            isActive={item.label === activeBadge}
+                            onClick={handleBadgeClick}
+                        />)}
+                    </div>
+                </motion.div>
 
-
-
-
-
-
-
-                <h3>Herramientas de Front</h3>
-                <div className="skills-badge">
-                    {front.map((item) => <SkillBadge
-                        key={item.label}
-                        icon={item.icon}
-                        label={item.label}
-                        link={item.link}
-                        isActive={item.label === activeBadge}
-                        onClick={handleBadgeClick}
-                    />)}
-                </div>
-
-                <h3>Herramientas Backend</h3>
-                <div className="skills-badge">
-                    {backend.map((item) => <SkillBadge
-                        key={item.label}
-                        icon={item.icon}
-                        label={item.label}
-                        link={item.link}
-                        isActive={item.label === activeBadge}
-                        onClick={handleBadgeClick}
-                    />)}
-                </div>
-
-                <h3>Herramientas Auxiliares</h3>
-                <div className="skills-badge">
-                    {aux.map((item) => <SkillBadge
-                        key={item.label}
-                        icon={item.icon}
-                        label={item.label}
-                        link={item.link}
-                        isActive={item.label === activeBadge}
-                        onClick={handleBadgeClick}
-                    />)}
-                </div>
-            </motion.div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            </div>
         </div>
     );
 };

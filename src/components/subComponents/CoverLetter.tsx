@@ -1,14 +1,15 @@
-
 import { motion } from "framer-motion";
+
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
 const CoverLetter = () => {
     return (
         <motion.div
             className="cuadro-sobremi"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }} 
+            viewport={{ once: isMobile, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: "linear" }}
         >
             <div className="p-overflow">
                 <h3>Buenas tardes, soy Werner Lange y me dedico al diseño y desarrollo web.</h3>

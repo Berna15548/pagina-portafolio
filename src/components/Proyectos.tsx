@@ -7,9 +7,31 @@ import "../App.scss";
 import {Card, Text, Title} from "@mantine/core";
 import {CgHomeScreen} from "react-icons/cg";
 import {CgScreen} from "react-icons/cg";
+import {useEffect} from "react";
+import {useState} from "react";
+import SwipeHint from "./subComponents/SwipeHint.tsx";
 
+const useIsMobile = () => {
+    const [isMobile, setIsMobile] = useState(
+        window.matchMedia("(max-width: 768px)").matches
+    );
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+        const listener = (e) => setIsMobile(e.matches);
+
+        mediaQuery.addEventListener("change", listener);
+        return () => mediaQuery.removeEventListener("change", listener);
+    }, []);
+
+    return isMobile;
+};
 
 const Proyectos = () => {
+    
+    const isMobile = useIsMobile();
+    
     const settings = {
         dots: false,
         infinite: true,
@@ -17,23 +39,15 @@ const Proyectos = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         centerMode: true,
-        centerPadding: "20%",
-        arrows: true,
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    centerPadding: "0px",
-                    arrows: false,
-                },
-            },
-        ],
+        centerPadding: isMobile ? "0px" : "20%",
+        arrows: !isMobile,
+
     };
 
 
     return (
         <div id="proyectos-container" >
+            
             <Slider {...settings}>
                 
                 <div className="contenedor-slide">
@@ -64,7 +78,6 @@ const Proyectos = () => {
                         width="100%"
                         alt="X"
                     />
-                    
                 </div>
 
                 <div className="contenedor-slide">
@@ -95,7 +108,6 @@ const Proyectos = () => {
                         width="100%"
                         alt="X"
                     />
-
                 </div>
 
                 <div className="contenedor-slide">
