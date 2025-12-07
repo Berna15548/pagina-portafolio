@@ -6,6 +6,8 @@ import { Card, Text, Title } from "@mantine/core";
 import { CgHomeScreen, CgScreen } from "react-icons/cg";
 import { useEffect, useState } from "react";
 import SwipeHint from "./subComponents/SwipeHint.tsx";
+import PrevArrow from "./subComponents/PrevArrow.tsx";
+import NextArrow from "./subComponents/NextArrow.tsx";
 
 const useIsMobile = () => {
     const [isMobile, setIsMobile] = useState(
@@ -33,13 +35,18 @@ const Proyectos = () => {
         slidesToScroll: 1,
         centerMode: true,
         centerPadding: isMobile ? "0px" : "20%",
-        arrows: !isMobile,
+        arrows: true,
+        prevArrow: <PrevArrow />,
+        nextArrow: <NextArrow />,
     };
 
     return (
         <div id="proyectos-container">
+            
             <Slider {...settings}>
-                <div className="contenedor-slide">
+                <div 
+                    className="contenedor-slide"
+                    onClick={() => window.open("https://github.com/Berna15548?tab=repositories", "_blank")}>
                     <Card className="info">
                         <Title
                             order={1}
@@ -77,7 +84,9 @@ const Proyectos = () => {
                     />
                 </div>
 
-                <div className="contenedor-slide">
+                <div className="contenedor-slide"
+                     onClick={() => window.open("https://github.com/Berna15548?tab=repositories", "_blank")}
+                >
                     <Card className="info">
                         <Title
                             order={1}
@@ -115,7 +124,9 @@ const Proyectos = () => {
                     />
                 </div>
 
-                <div className="contenedor-slide">
+                <div className="contenedor-slide"
+                     onClick={()=> window.open( "https://github.com/Berna15548?tab=repositories", "_blank")}
+                >
                     <Card className="info">
                         <Title
                             order={1}

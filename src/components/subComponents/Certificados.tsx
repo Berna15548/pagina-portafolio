@@ -2,7 +2,7 @@ import { Card, Button, Group } from "@mantine/core";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { SlControlRewind, SlControlForward } from "react-icons/sl";
-import { FaRegCircle } from "react-icons/fa";
+import CustomPointerWrapper from "../Canvas/CustomPointerWrapper.tsx";
 
 const cardsData = [
     { title: "Lic en adm", image: "https://www.educativa.com/wp-content/uploads/2020/09/certificado-ejemplo_-1024x698.jpg" },
@@ -15,71 +15,103 @@ const cardsData = [
 
 const Certificados = () => {
     const [index, setIndex] = useState(0);
+    const [direction, setDirection] = useState(0);
     const [modalCard, setModalCard] = useState<number | null>(null);
 
     useEffect(() => {
-        // preload images
         cardsData.forEach(card => {
             const img = new Image();
             img.src = card.image;
         });
     }, []);
 
-    const nextCard = () => setIndex((prev) => (prev + 1) % cardsData.length);
-    const prevCard = () => setIndex((prev) => (prev - 1 + cardsData.length) % cardsData.length);
+    const nextCard = () => {
+        setDirection(1);
+        setIndex((prev) => (prev + 1) % cardsData.length);
+    };
 
-    const nextModalCard = () => setModalCard((prev) => (prev! + 1) % cardsData.length);
-    const prevModalCard = () => setModalCard((prev) => (prev! - 1 + cardsData.length) % cardsData.length);
-    
+    const prevCard = () => {
+        setDirection(-1);
+        setIndex((prev) => (prev - 1 + cardsData.length) % cardsData.length);
+    };
+
+    const nextModalCard = () =>
+        setModalCard((prev) => (prev! + 1) % cardsData.length);
+
+    const prevModalCard = () =>
+        setModalCard((prev) => (prev! - 1 + cardsData.length) % cardsData.length);
+
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
     return (
         <motion.div
             id="cards-container"
             initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }} 
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: isMobile, margin: "-100px" }}
             transition={{ duration: 1, ease: "linear" }}
             style={{ textAlign: "center" }}
         >
-            {/* Botonera */}
+            
             <Group mt="md" id="botonera-certificados">
                 <Button color="transparent" size="lg" radius="xl" onClick={prevCard}>
                     <SlControlRewind size={32} />
                 </Button>
-                <FaRegCircle /><FaRegCircle /><FaRegCircle /><FaRegCircle /><FaRegCircle />
+
+                <div id="espaciador-mobiles"></div>
+                
+                <span>Certificaciones</span>
+
                 <Button color="transparent" size="lg" radius="xl" onClick={nextCard}>
                     <SlControlForward size={32} />
                 </Button>
             </Group>
 
-            {/* Cards */}
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: 0 }}   // ya está dentro del componente animado
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <Card
-                        shadow="sm"
-                        padding="lg"
-                        className="card-certificados"
-                        style={{ cursor: "pointer" }}
-                        onClick={() => setModalCard(index)}
-                    >
-                        <div className="titulo-card">{cardsData[index].title}</div>
-                        <img
-                            src={cardsData[index].image}
-                            alt={cardsData[index].title}
-                            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                        />
-                    </Card>
-                </motion.div>
-            </AnimatePresence>
 
-            {/* Modal */}
+            <CustomPointerWrapper>
+                <AnimatePresence mode="wait" custom={direction}>
+                    <motion.div
+                        key={index}
+                        custom={direction}
+                        initial={{ opacity: 0, x: direction === 1 ? 150 : -150 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: direction === 1 ? -300 : 300 }}
+                        transition={{ duration: 0.35 }}
+                    >
+                        <motion.div
+                            drag="x"
+                            dragElastic={0}
+                            dragMomentum={true}
+                            onDragEnd={(e, info) => {
+                                if (info.velocity.x < -300) {
+                                    setDirection(1);
+                                    nextCard();
+                                } else if (info.velocity.x > 300) {
+                                    setDirection(-1);
+                                    prevCard();
+                                }
+                            }}
+                        >
+                            <Card
+                                shadow="sm"
+                                padding="lg"
+                                className="card-certificados"
+                                onClick={() => setModalCard(index)}
+                            >
+                                <div className="titulo-card">{cardsData[index].title}</div>
+                                <img
+                                    src={cardsData[index].image}
+                                    alt={cardsData[index].title}
+                                    style={{ width: "100%", height: "100%", objectFit: "cover", pointerEvents: "none" }}
+                                />
+                            </Card>
+
+                        </motion.div>
+                    </motion.div>
+                </AnimatePresence>
+
+            </CustomPointerWrapper>
+
             {modalCard !== null && (
                 <div className="modal-card">
                     <AnimatePresence mode="wait">
@@ -100,7 +132,6 @@ const Certificados = () => {
                         />
                     </AnimatePresence>
 
-                    {/* Botones modal */}
                     <Button
                         color="transparent"
                         size="lg"
@@ -137,11 +168,7 @@ const Certificados = () => {
 
                     <div
                         onClick={() => setModalCard(null)}
-                        style={{
-                            position: "absolute",
-                            inset: 0,
-                            zIndex: 0,
-                        }}
+                        style={{ position: "absolute", inset: 0, zIndex: 0 }}
                     />
                 </div>
             )}
