@@ -14,6 +14,11 @@
 }
 
 
+
+body {
+  display: block; /* quita el flex centering */
+}
+
 span {
   margin: 0 !important;
 }
