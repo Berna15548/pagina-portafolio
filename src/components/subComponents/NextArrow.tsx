@@ -1,4 +1,5 @@
-import {CgChevronRight} from "react-icons/cg";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faAnglesRight} from "@fortawesome/free-solid-svg-icons";
 
 type ArrowProps = {
     onClick?: () => void;
@@ -7,16 +8,10 @@ type ArrowProps = {
 const NextArrow: React.FC<ArrowProps> = ({ onClick }) => (
     <div
         onClick={onClick}
-        style={{
-            position: "absolute",
-            top: "50%",
-            right: 10,
-            transform: "translateY(-50%) scale(2)", // <- scale 2
-            zIndex: 1000,
-            cursor: "pointer",
-        }}
+        className="proyecto-side-buttons"
+        style={{top: "50%", right: "15%",}}
     >
-        <CgChevronRight color="white" />
+        <FontAwesomeIcon icon={faAnglesRight} style={{ color: 'white' }} />
     </div>
 );
 

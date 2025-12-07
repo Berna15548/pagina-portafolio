@@ -323,6 +323,8 @@
 
   p{
     pointer-events: none;
+    text-align: left;
+    white-space: pre-line;
   }
 
 
@@ -524,25 +526,34 @@
     }
     .info {
       opacity: 1;
+      font-size: 20px;
     }
   }
 }
 
+.proyecto-side-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  color: black;
+  cursor: pointer;
+  transform: translateY(-50%) scale(4);
+  z-index: 1000;
+  background-color: transparent;
+  height: 10px;
+  width: 12px;
+  text-shadow: 0 0 30px rgb(78, 10, 255);
 
+  @media (max-width: 768px) {
+    display: none;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  &:hover{
+    scale: 1.2;
+    transition: ease-in-out 0.1s;
+  }
+}
 
 
 .title-scanner {

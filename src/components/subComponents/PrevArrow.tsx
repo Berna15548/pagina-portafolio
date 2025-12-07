@@ -1,4 +1,6 @@
-import { CgChevronLeft } from "react-icons/cg";
+
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faAnglesLeft} from "@fortawesome/free-solid-svg-icons";
 
 type ArrowProps = {
     onClick?: () => void;
@@ -7,23 +9,10 @@ type ArrowProps = {
 const PrevArrow: React.FC<ArrowProps> = ({ onClick }) => (
     <div
         onClick={onClick}
-        style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "absolute",
-            top: "50%",
-            left: "15%",
-            color: "black",
-            transform: "translateY(-50%) scale(6)", // <- scale 2
-            zIndex: 1000,
-            backgroundColor: "transparent",
-            height: "10px",
-            width: "12px",
-            textShadow: "0 0 30px rgb(78, 10, 255)",
-        }}
+        className="proyecto-side-buttons"
+        style={{top: "50%", left: "15%"}}
     >
-        <CgChevronLeft color="darkBlue" />
+        <FontAwesomeIcon icon={faAnglesLeft} style={{ color: 'white' }} />
     </div>
 );
 
