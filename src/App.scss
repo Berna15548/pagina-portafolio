@@ -600,12 +600,7 @@
 
 
 #nav-bar-container {
-  background: linear-gradient(
-                  70deg,
-                  #1a024b 16.667%,
-                  #8822ab 50%,
-                  #1a024b 100%
-  );
+
   position: fixed;
   top: 0;
   left: 0;
@@ -615,6 +610,12 @@
   align-items: center;
   justify-content: center;
   padding: 20px 8%;
+  background: linear-gradient(
+                  70deg,
+                  #1a024b 16.667%,
+                  #8822ab 50%,
+                  #1a024b 100%
+  );
 
   .mantine-Button-root {
     overflow: visible;
@@ -956,6 +957,75 @@
   }
 }
 
+/*    =============   contacto    =============*/
+
+#contacto-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 15vh 8% 15vh 8%;
+  backdrop-filter: blur(3px);
+  box-shadow: 0 0 30px #00152a;
+  background-color: rgba(13, 0, 26, 0.42);
+
+  @media (max-width: 768px) {
+    padding: 5vh 0 5vh 0;
+
+    > div.mantine-Stack-root {
+      gap: 0!important;
+      width: 100%;
+      scale: 0.8;
+    }
+  }
+
+  > div.mantine-Stack-root {
+    gap: 6rem;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+}
+
+#espaciador-top{
+  margin-top: 90px;
+}
+
+.cont-badge-contacto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 15vh;
+  width: 18vh;
+  border: 4px outset #0f4201;
+  border-radius: 15px;
+  background-color: rgb(41, 102, 108);
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    height: 10vh;
+    width: 10vh;
+    padding: 10px;
+  }
+
+  &:hover{
+    scale: 1.2;
+    transition: ease-out 0.1s;
+  }
+
+  svg {
+    scale: 2;
+  }
+}
+
+#marca-de-agua{
+  position: absolute;
+  left: 2rem;
+  text-align: left;
+}
+
 /*    =============   wave pointer  =============*/
 
 
@@ -999,4 +1069,52 @@
     box-shadow: inset 0 0 5px rgba(20, 0, 255, 0.76);
 
   }
+}
+
+
+//            pruevas
+
+
+
+.icon-box {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #25D366;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.icon-box::before,
+.icon-box::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 2px solid #25D366;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.icon-box::before {
+  transform: scale(1.2);
+}
+.icon-box::after {
+  transform: scale(1.4);
+}
+
+.icon-box:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+.icon-box:hover::before {
+  opacity: 0.5;
+}
+
+.icon-box:hover::after {
+  opacity: 0.3;
 }

@@ -1,6 +1,6 @@
 import { Card, Button, Group } from "@mantine/core";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { SlControlRewind, SlControlForward } from "react-icons/sl";
 import CustomPointerWrapper from "../Canvas/CustomPointerWrapper.tsx";
 
@@ -17,6 +17,8 @@ const Certificados = () => {
     const [index, setIndex] = useState(0);
     const [direction, setDirection] = useState(0);
     const [modalCard, setModalCard] = useState<number | null>(null);
+
+    const dragStartX = useRef(0); // para controlar drag vs click
 
     useEffect(() => {
         cardsData.forEach(card => {
@@ -43,6 +45,18 @@ const Certificados = () => {
 
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
+    // Funciones para detectar click vs drag
+    const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        dragStartX.current = e.clientX;
+    };
+
+    const handleMouseUp = (idx: number) => (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        const distance = Math.abs(e.clientX - dragStartX.current);
+        if (distance < 5) {
+            setModalCard(idx);
+        }
+    };
+
     return (
         <motion.div
             id="cards-container"
@@ -52,21 +66,19 @@ const Certificados = () => {
             transition={{ duration: 1, ease: "linear" }}
             style={{ textAlign: "center" }}
         >
-            
             <Group mt="md" id="botonera-certificados">
                 <Button color="transparent" size="lg" radius="xl" onClick={prevCard}>
                     <SlControlRewind size={32} />
                 </Button>
 
                 <div id="espaciador-mobiles"></div>
-                
+
                 <span>Certificaciones</span>
 
                 <Button color="transparent" size="lg" radius="xl" onClick={nextCard}>
                     <SlControlForward size={32} />
                 </Button>
             </Group>
-
 
             <CustomPointerWrapper>
                 <AnimatePresence mode="wait" custom={direction}>
@@ -91,12 +103,13 @@ const Certificados = () => {
                                     prevCard();
                                 }
                             }}
+                            onMouseDown={handleMouseDown}
+                            onMouseUp={handleMouseUp(index)}
                         >
                             <Card
                                 shadow="sm"
                                 padding="lg"
                                 className="card-certificados"
-                                onClick={() => setModalCard(index)}
                             >
                                 <div className="titulo-card">{cardsData[index].title}</div>
                                 <img
@@ -105,11 +118,9 @@ const Certificados = () => {
                                     style={{ width: "100%", height: "100%", objectFit: "cover", pointerEvents: "none" }}
                                 />
                             </Card>
-
                         </motion.div>
                     </motion.div>
                 </AnimatePresence>
-
             </CustomPointerWrapper>
 
             {modalCard !== null && (
