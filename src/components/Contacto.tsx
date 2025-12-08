@@ -1,64 +1,66 @@
-import {Stack} from "@mantine/core";
-import {Badge} from "@mantine/core";
-import '../App.scss'
-import {IconBrandWhatsapp} from "@tabler/icons-react";
-import {IconMail} from "@tabler/icons-react";
-import {IconBrandGithub} from "@tabler/icons-react";
+import { Stack, Tooltip } from "@mantine/core";
+import '../App.scss';
+import { IconBrandWhatsapp, IconMail, IconBrandGithub } from "@tabler/icons-react";
+import { useClipboard } from "@mantine/hooks";
+import { contactos } from "../service/contactData.ts";
 
 const Contacto = () => {
-    
-    
-    /*This is my Digital portfolio @2021. All Rights Reserved.
-    * I hope you got interested in my works!
-    * */
+    const clipboard = useClipboard({ timeout: 2000 }); // tiempo que "copiado" permanece true
+    const copiado = clipboard.copied;
+    const handleCopy = clipboard.copy;
+
     return (
         <div id="espaciador-top">
             <footer id="contacto-container">
                 <div id="marca-de-agua">
-                    Este es mi portafolio digital @2025.
-                    <br/>
+                    Este es mi portafolio digital ©2025.
+                    <br />
                     Todos los derechos reservados.
                 </div>
+
                 <Stack>
-                    <div
-                        className="cont-badge-contacto">
-                        <IconBrandWhatsapp></IconBrandWhatsapp>
-                        <label>
-                            Whatsapp
-                        </label>
-                    </div>
+                    {/*===============================================================*/}
+                    <Tooltip label={copiado ? "Número copiado!" : "Haz click para copiar"} withArrow>
+                        <div className="cont-badge-contacto whatsapp" onClick={() => handleCopy(contactos.whatsapp)}>
+                            <div className="layer">
+                                {[...Array(5)].map((_, i) => (
+                                    <span key={i}></span>
+                                ))}
+                                <IconBrandWhatsapp />
+                                <label>Whatsapp</label>
+                            </div>
+                        </div>
+                    </Tooltip>
 
-                    <div
-                        className="cont-badge-contacto">
-                        <IconMail></IconMail>
-                        <label>
-                            Email
-                        </label>
-                    </div>
+                    {/*===============================================================*/}
+                    <Tooltip label={copiado ? "Email copiado!" : "Haz click para copiar"} withArrow>
+                        <div className="cont-badge-contacto email" onClick={() => handleCopy(contactos.email)}>
+                            <div className="layer">
+                                {[...Array(5)].map((_, i) => (
+                                    <span key={i}></span>
+                                ))}
+                                <IconMail />
+                                <label>Email</label>
+                            </div>
+                        </div>
+                    </Tooltip>
 
-                    <div
-                        className="cont-badge-contacto"
-                        onClick={() => window.open("https://github.com/Berna15548?tab=repositories", "_blank")}
-                    >
-                        <IconBrandGithub></IconBrandGithub>
-
-                        <label>
-                            GitHub
-                        </label>
-                    </div>
-
-                 {/*   <div
-                        className="icon-box">
-                        <i className="fab fa-whatsapp"></i>
-                    </div>
-*/}
-
+                    {/*===============================================================*/}
+                    <Tooltip label={"Haz click para abrir el link"} withArrow>
+                        <div className="cont-badge-contacto github" onClick={() => window.open(contactos.github, "_blank")}>
+                            <div className="layer">
+                                {[...Array(5)].map((_, i) => (
+                                    <span key={i}></span>
+                                ))}
+                                <IconBrandGithub />
+                                <label>GitHub</label>
+                            </div>
+                        </div>
+                    </Tooltip>
                 </Stack>
-
             </footer>
         </div>
+    );
+};
 
-    )
-}
-
-export default Contacto
+export default Contacto;

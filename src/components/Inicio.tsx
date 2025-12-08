@@ -23,7 +23,7 @@ const Inicio = () => {
                     Estimados saludos, soy Werner Lange y me dedico a la programación tanto en front como backend
                 </p>
 
-                <BadgesInicio/>
+                <BadgesInicio></BadgesInicio>
                 
                 <div className="flechas-abajo"
                 >

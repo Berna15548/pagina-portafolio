@@ -811,7 +811,8 @@
   }
 
   &:hover {
-    transform: translateY(-2px);
+    transform: translateY(-5px);
+    scale: 1.1;
   }
 }
 
@@ -957,74 +958,6 @@
   }
 }
 
-/*    =============   contacto    =============*/
-
-#contacto-container{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 15vh 8% 15vh 8%;
-  backdrop-filter: blur(3px);
-  box-shadow: 0 0 30px #00152a;
-  background-color: rgba(13, 0, 26, 0.42);
-
-  @media (max-width: 768px) {
-    padding: 5vh 0 5vh 0;
-
-    > div.mantine-Stack-root {
-      gap: 0!important;
-      width: 100%;
-      scale: 0.8;
-    }
-  }
-
-  > div.mantine-Stack-root {
-    gap: 6rem;
-    justify-content: space-around;
-    flex-direction: row;
-  }
-}
-
-#espaciador-top{
-  margin-top: 90px;
-}
-
-.cont-badge-contacto {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  height: 15vh;
-  width: 18vh;
-  border: 4px outset #0f4201;
-  border-radius: 15px;
-  background-color: rgb(41, 102, 108);
-  padding: 10px;
-  color: white;
-  cursor: pointer;
-
-  @media (max-width: 768px) {
-    height: 10vh;
-    width: 10vh;
-    padding: 10px;
-  }
-
-  &:hover{
-    scale: 1.2;
-    transition: ease-out 0.1s;
-  }
-
-  svg {
-    scale: 2;
-  }
-}
-
-#marca-de-agua{
-  position: absolute;
-  left: 2rem;
-  text-align: left;
-}
 
 /*    =============   wave pointer  =============*/
 
@@ -1072,49 +1005,195 @@
 }
 
 
-//            pruevas
 
+/*    =============   contacto    =============*/
 
-
-.icon-box {
-  position: relative;
-  width: 80px;
-  height: 80px;
+#contacto-container{
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  border: 2px solid #25D366;
-  border-radius: 8px;
-  transition: transform 0.3s;
+  justify-content: space-evenly;
+  padding: 15vh 8% 15vh 8%;
+  backdrop-filter: blur(3px);
+  box-shadow: 0 0 30px #00152a;
+  background-color: rgba(13, 0, 26, 0.42);
+
+  @media (max-width: 768px) {
+    padding: 5vh 0 10vh 0;
+
+    > div.mantine-Stack-root {
+      gap: 0!important;
+      width: 100%;
+    }
+  }
+
+  > div.mantine-Stack-root {
+    gap: 6rem;
+    justify-content: space-around;
+    flex-direction: row;
+  }
 }
 
-.icon-box::before,
-.icon-box::after {
-  content: "";
+#espaciador-top{
+  margin-top: 90px;
+
+  @media (max-width: 768px) {
+    margin-top: 30px;
+  }
+}
+
+#marca-de-agua{
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  border: 2px solid #25D366;
-  border-radius: 8px;
-  opacity: 0;
-  transition: opacity 0.3s, transform 0.3s;
+  left: 2rem;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    bottom: 2vh;
+  }
 }
 
-.icon-box::before {
-  transform: scale(1.2);
-}
-.icon-box::after {
-  transform: scale(1.4);
+
+.cont-badge-contacto {
+  position: relative;
+  width: 7rem;
+  height: 7rem;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.58);
+  padding: 10px;
+  color: black;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    height: 10vh;
+    width: 10vh;
+    padding: 10px;
+  }
+
+  &:hover{
+    transition: ease-out 0.1s;
+
+    .layer{
+      //angulo de rotacion del layer
+      transform: rotate(-35deg) skew(20deg);
+    }
+
+    svg {
+      position:  absolute;
+      transform: translate(10px, -20px)!important;
+    }
+
+    label {
+      transform: translate(20px, 0px)!important;
+      cursor: pointer;
+    }
+  }
+
+
+
+  svg {
+    scale: 2;
+  }
+
+  .layer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s;
+
+    span{
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      border: 4px outset #13811f;
+      border-radius: 30px;
+      box-sizing: border-box;
+      transition: all 0.3s;
+
+    }
+  }
 }
 
-.icon-box:hover {
-  transform: translateY(-4px) scale(1.05);
+
+
+/* =================================== */
+/* Contenedor de badges de contacto */
+
+
+
+
+.cont-badge-contacto:hover .layer span:nth-child(1) {
+  opacity: 0.2;
+}
+.cont-badge-contacto:hover .layer span:nth-child(2) {
+  opacity: 0.4;
+  transform: translate(5px, -5px);
+}
+.cont-badge-contacto:hover .layer span:nth-child(3) {
+  opacity: 0.6;
+  transform: translate(10px, -10px);
+}
+.cont-badge-contacto:hover .layer span:nth-child(4) {
+  opacity: 0.8;
+  transform: translate(15px, -15px);
+}
+.cont-badge-contacto:hover .layer span:nth-child(5) {
+  opacity: 1;
+  transform: translate(20px, -20px);
 }
 
-.icon-box:hover::before {
-  opacity: 0.5;
+
+/* Colores por badge */
+.cont-badge-contacto.whatsapp .layer span {
+  border-color: #1a8125;
+}
+.cont-badge-contacto.whatsapp .layer svg {
+  color: rgba(0, 89, 9, 0.79);
+  filter: drop-shadow(1px 1px 1px #00ff1b);
 }
 
-.icon-box:hover::after {
-  opacity: 0.3;
+.cont-badge-contacto.email .layer span {
+  border-color: #620e0e;
 }
+.cont-badge-contacto.email .layer svg {
+  color: rgba(128, 5, 5, 0.73);
+  filter: drop-shadow(1px 1px 1px #ff0000);
+}
+
+.cont-badge-contacto.github .layer span {
+  border-color: #5e2169;
+}
+.cont-badge-contacto.github .layer svg {
+  color: rgba(106, 6, 124, 0.73);
+  filter: drop-shadow(1px 1px 1px #d700ff);
+}
+
+.cont-badge-contacto.whatsapp:hover .layer span {
+  background-color: rgba(140, 206, 148, 0.72);
+  border-radius: 50px;
+  border: dotted darkgreen;
+}
+
+.cont-badge-contacto.email:hover .layer span {
+  background-color: rgba(248, 122, 165, 0.8);
+  border-radius: 50px;
+  border: double darkred;
+}
+
+.cont-badge-contacto.github:hover .layer span {
+  background-color: rgba(248, 129, 242, 0.62);
+  border-radius: 50px;
+}
+
+
+
+
