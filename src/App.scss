@@ -421,6 +421,7 @@
 
   @media (max-width: 768px){
     width: 100%;
+    height: 130vh;
   }
 
   .slick-slider {
@@ -491,6 +492,7 @@
     transition: opacity 0.4s;
     padding: 0 20px;
 
+
     * {
       font-family: 'Ubuntu', sans-serif !important;
     }
@@ -517,6 +519,7 @@
   }
 
   @media (max-width: 768px) {
+
     img {
       opacity: 0.2;
     }
@@ -1115,8 +1118,8 @@
   cursor: pointer;
 
   @media (max-width: 768px) {
-    height: 10vh;
-    width: 10vh;
+    height: 12vh;
+    width: 12vh;
     padding: 10px;
   }
 
@@ -1153,6 +1156,8 @@
     width: 100%;
     height: 100%;
     transition: transform 0.3s;
+    font-family: Quantico, sans-serif;
+    font-weight: bold;
 
     span{
       position: absolute;
