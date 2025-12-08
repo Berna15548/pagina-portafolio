@@ -14,7 +14,7 @@ const SobreMi = () => {
 
             <Skills />
             <div className="columna-sobremi">
-                <CoverLetter/>
+                <CoverLetter />
                 <Certificados />
             </div>
 

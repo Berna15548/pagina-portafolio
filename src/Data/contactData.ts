@@ -1,4 +1,3 @@
-// src/utils/contactData.ts
 import { useState } from "react";
 
 export const useClipboard = () => {

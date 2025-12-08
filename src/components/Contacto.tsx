@@ -2,7 +2,7 @@ import { Stack, Tooltip } from "@mantine/core";
 import '../App.scss';
 import { IconBrandWhatsapp, IconMail, IconBrandGithub } from "@tabler/icons-react";
 import { useClipboard } from "@mantine/hooks";
-import { contactos } from "../service/contactData.ts";
+import { contactos } from "../Data/contactData.ts";
 
 const Contacto = () => {
     const clipboard = useClipboard({ timeout: 2000 }); // tiempo que "copiado" permanece true
@@ -18,6 +18,8 @@ const Contacto = () => {
                     Todos los derechos reservados.
                 </div>
 
+                <span id="muchas-gracias">Espero que le haya sido de agrado y podamos comunicarnos pronto.</span>
+                
                 <Stack>
                     {/*===============================================================*/}
                     <Tooltip label={copiado ? "Número copiado!" : "Haz click para copiar"} withArrow>

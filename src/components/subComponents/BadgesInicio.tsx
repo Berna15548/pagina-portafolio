@@ -2,7 +2,7 @@ import '@mantine/core/styles.css';
 import { Group, Badge, Tooltip } from "@mantine/core";
 import { IconBrandWhatsapp, IconMail, IconBrandGithub } from "@tabler/icons-react";
 import { useClipboard } from "@mantine/hooks";
-import { contactos } from "../../service/contactData.ts";
+import { contactos } from "../../Data/contactData.ts";
 import { useState } from "react";
 
 const BadgesInicio = () => {

@@ -1,9 +1,7 @@
 import React, { useState, type MouseEvent } from 'react';
 import '../../App.scss'
 
-/**
- * Componente que renderiza el punto negro estático.
- */
+
 const PointerCircle: React.FC<{ x: number; y: number; isVisible: boolean }> = ({ x, y, isVisible }) => {
     // Si no está visible, no se renderiza
     if (!isVisible) return null;
@@ -30,7 +28,6 @@ const CustomPointerWrapper: React.FC<CustomPointerWrapperProps> = ({ children })
     const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
         const rect = e.currentTarget.getBoundingClientRect();
         setMousePos({
-            // X e Y relativas al contenedor
             x: e.clientX - rect.left,
             y: e.clientY - rect.top,
         });
@@ -45,11 +42,7 @@ const CustomPointerWrapper: React.FC<CustomPointerWrapperProps> = ({ children })
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onMouseMove={handleMouseMove}
-            style={{
-                position: 'relative',
-                // Oculta el cursor nativo del sistema
-                cursor: isHovering ? 'none' : 'default',
-            }}
+            style={{ position: 'relative'}}
         >
             {children}
 

@@ -40,7 +40,6 @@ const Proyectos = () => {
         nextArrow: <NextArrow />,
     };
 
-    // Guardamos la posición inicial del mouse para detectar drag
     const startXRef = useRef(0);
 
     const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {

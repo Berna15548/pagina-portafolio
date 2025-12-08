@@ -1,6 +1,6 @@
 :root {
     --loader-size: 150px;
-    --loader-color: #bfc5c0; /* azul, o el color que quieras */
+    --loader-color: #bfc5c0;
 }
 
 @keyframes loader-animation {
@@ -19,7 +19,6 @@
         animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
     }
 }
-/* https://grabient.com/HQFgrCA0oGwIzRPRAmFi4HZEAYDM0KAnAByFE7RxhGQzAphh0Mjb0qYLB5HZygiUYFyg4gA?style=angularSwatches&steps=13 */
 
 
 .loader {

@@ -45,7 +45,7 @@ const Certificados = () => {
 
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-    // Funciones para detectar click vs drag
+    // Funciones para separar entre clikeo o arrastre del elemento
     const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         dragStartX.current = e.clientX;
     };

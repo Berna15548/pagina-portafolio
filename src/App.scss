@@ -173,7 +173,6 @@
 
     > .mantine-Badge-root {
 
-      // CORRECCIÓN: Usamos '&.badge-activo' para seleccionar el mismo elemento con la clase
       &.badge-activo {
         height: 100px;
         background-color: rgba(0, 0, 0, 0.81) !important;
@@ -197,7 +196,7 @@
 }
 
 
-/* estilos por ID  */
+/* estilos por ID (algunas clases se me mezclaron igualmente) */
 
 #particles-inicio > canvas {
   opacity: 0.7 !important;
@@ -353,13 +352,10 @@
   width: 500px;
   height: 350px;
   text-align: center;
-  /*
-  transition: 0.3s ease-in-out;
-  */
   margin-bottom: 30px;
 
   > * {
-    width: 90%; // todos los hijos del contenedor
+    width: 90%; // el  > * aplica a todos los hijos del contenedor
   }
 
   @media (max-width: 768px) {
@@ -453,7 +449,7 @@
 
     &:not(.slick-current) {
       z-index: 1;
-      transform: scale(0.85) translateY(20px); // detrás del central
+      transform: scale(0.85) translateY(20px);
       opacity: 0.4;
     }
   }
@@ -685,10 +681,27 @@
   flex-direction: row;
   font-family: 'Space Grotesk', sans-serif;
 
+  #muchas-gracias-nav{
+    display: none;
+  }
 
   @media (max-width: 768px) {
+
     width: 100%;
+
+    #muchas-gracias-nav{
+      display: flex!important;
+      position: absolute;
+      transform: translate(20%, 0);
+      font-family: 'Space Grotesk', sans-serif;
+      color: white;
+      width: 70vw;
+      text-shadow: 2px 4px 5px rgb(0, 0, 0);
+      pointer-events: none;
+    }
   }
+
+
 
   .mantine-Button-root {
     font-size: clamp(1.3rem, 2vw, 1.4rem);
@@ -733,7 +746,7 @@
   color: rgb(217, 246, 242);
 
   mask-image: linear-gradient(to bottom, black calc(100% - 40px), transparent 100%);
-  height: calc(100vh - 75px + 40px) ; //sumo los px del borde degradado
+  height: calc(100vh - 75px + 40px) ; //aca le sumo los px del borde degradado para que quede fuera de la vista inicial
 
   p{
     pointer-events: none;
@@ -931,7 +944,8 @@
     color: white;
     scale: 2.2;
     margin-left: 5%;
-  }
+
+    animation: burgerBounce 5s linear infinite;  }
 
   #nav-bar-container{
     padding: 0 8%;
@@ -958,13 +972,24 @@
   }
 }
 
+@keyframes burgerBounce {
+  0%   { transform: translateY(0); }
+
+  4%   { transform: translateY(-2px); }  /* salto 1 rápido */
+  8%   { transform: translateY(0); }
+
+  12%  { transform: translateY(-2px); }  /* salto 2 rápido */
+  16%  { transform: translateY(0); }
+
+  /* del 16% al 100% queda quieto → 4 segundos aprox si dura 5s */
+  100% { transform: translateY(0); }
+}
+
+
 
 /*    =============   wave pointer  =============*/
 
 
-
-
-/* --- Estilos del Círculo Flotante --- */
 .custom-pointer-circle {
   position: absolute;
   pointer-events: none;
@@ -1052,6 +1077,27 @@
   }
 }
 
+#muchas-gracias {
+  position: absolute;
+  transform: translateY(-120px);
+  font-family: Space Grotesk, sans-serif;
+  font-size: 30px;
+  background: linear-gradient(
+                  180deg,
+
+                  #ffffff 20%,
+                  rgba(144, 145, 238, 0.87) 80%,
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  box-shadow: inset 0 -10px 10px -10px rgba(255, 255, 255, 0.41);
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
 
 .cont-badge-contacto {
   position: relative;
@@ -1127,8 +1173,6 @@
 
 /* =================================== */
 /* Contenedor de badges de contacto */
-
-
 
 
 .cont-badge-contacto:hover .layer span:nth-child(1) {

@@ -20,6 +20,7 @@ const NavBar = () => {
     return (
         <header id="nav-bar-container">
             <div id="nav-flex">
+
                 <div id="nav-flex-pc">
                     <Button onClick={() => deslizarPantalla("inicio-container")}>
                         Inicio
@@ -37,13 +38,14 @@ const NavBar = () => {
                         Contacto
                     </Button>
                 </div>
-
                 
                 <IconBurger 
                     id="hamburger-icon"
                     stroke={2}
                     onClick={toggleMenu}
                 />
+                <span id="muchas-gracias-nav">Bienvenido, espero que mi trabajo sea de su agrado</span>
+                
                 
                 <div
                     id="nav-links"

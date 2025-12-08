@@ -17,9 +17,9 @@ const Inicio = () => {
 
             <div id="espaciador-top-inicio"></div>
                 
-            <div id="div-background-inicio">
+            <div id="div-background-inicio" >
 
-                <p>
+                <p >
                     Estimados saludos, soy Werner Lange y me dedico a la programación tanto en front como backend
                 </p>
 

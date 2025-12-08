@@ -15,7 +15,7 @@ function App() {
 
     useEffect(() => {
 
-        const MINIMUM_LOADING_TIME = 2000; // tiempo minimo de laoding
+        const MINIMUM_LOADING_TIME = 2000; // tiempo minimo del loading
         const startTime = Date.now();
 
         const handleLoad = () => {
