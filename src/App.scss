@@ -94,7 +94,8 @@
 
 #skills{
   height: 100%;
-  overflow: visible!important;
+  overflow-x: visible!important;
+
 
   h3{
     color: white;
@@ -125,6 +126,7 @@
   flex-wrap: wrap;
   gap: 10px;
   justify-content: space-around;
+  overflow: hidden;
 
   > .mantine-Badge-root {
     display: flex;
@@ -273,7 +275,6 @@
 #app-container{
   position: relative!important;
   z-index: 1;
-  overflow-x: visible;
 }
 
 #sobre-mi-container{
