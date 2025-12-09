@@ -209,18 +209,18 @@
 #muteButton {
   background: transparent;
   border: none;
-
+  outline: none;
+  svg {
+    scale: 1.5;
+    transition: transform 0.15s ease;
+    transform-origin: center;
+  }
+  &:hover svg {
+    scale: 1.25;
+  }
 
 }
 
-#muteButton svg {
-  transition: transform 0.15s ease;
-  transform-origin: center;
-}
-
-#muteButton:hover svg {
-  scale: 1.25;
-}
 
 
 #particles-inicio > canvas {

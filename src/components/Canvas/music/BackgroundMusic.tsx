@@ -8,7 +8,7 @@ const BackgroundMusic = () => {
         const unlockAudio = () => {
             if (audioRef.current) {
                 audioRef.current.muted = isMuted;
-                audioRef.current.volume = 0.15;
+                audioRef.current.volume = 0.2;
                 audioRef.current.play().catch(() => {});
             }
             window.removeEventListener("click", unlockAudio);
