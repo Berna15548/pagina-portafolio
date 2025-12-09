@@ -8,6 +8,8 @@ import ParticlesComponent from "./components/Canvas/ParticlesComponent.tsx";
 import { useState, useEffect } from "react";
 import { CssLoader } from "./components/Canvas/CssLoader.tsx";
 import ParticlesInitializer from "./components/Canvas/ParticlesInitializer.tsx";
+import BackgroundMusic from "./components/Canvas/music/BackgroundMusic.tsx";
+import {MusicProvider} from "./components/Canvas/music/MusicProvider.tsx";
 
 
 function App() {
@@ -75,19 +77,22 @@ function App() {
 
     /* ====== App principal ====== */
     return (
-        <div style={{backgroundColor: "#4c4cd0"}}>
-            <ParticlesInitializer />
-            <ParticlesComponent id="particles-global" />
-            <div id="app-container">
-                <NavBar />
-                <Inicio />
-                <SobreMi />
-                <Proyectos />
-                <Contacto />
+        <MusicProvider>
+            <BackgroundMusic />
+            <div style={{backgroundColor: "#4c4cd0"}}>
+                <ParticlesInitializer />
+                <ParticlesComponent id="particles-global" />
+                <div id="app-container">
+                    <NavBar />
+                    <Inicio />
+                    <SobreMi />
+                    <Proyectos />
+                    <Contacto />
+
+                </div>
             </div>
+        </MusicProvider>
 
-
-        </div>
     );
 }
 

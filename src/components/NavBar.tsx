@@ -3,6 +3,7 @@ import { Button } from "@mantine/core";
 import {useState} from "react";
 import {IconChevronsDown} from "@tabler/icons-react";
 import {IconBurger} from "@tabler/icons-react";
+import MuteButton from "./Canvas/music/MuteButton.tsx";
 
 
 const NavBar = () => {
@@ -37,6 +38,8 @@ const NavBar = () => {
                     <Button onClick={() => deslizarPantalla("contacto-container")}>
                         Contacto
                     </Button>
+
+                    <MuteButton></MuteButton>
                 </div>
                 
                 <IconBurger 
@@ -44,8 +47,11 @@ const NavBar = () => {
                     stroke={2}
                     onClick={toggleMenu}
                 />
-                <span id="muchas-gracias-nav">Bienvenido, espero que mi trabajo sea de su agrado</span>
-                
+                <span id="muchas-gracias-nav">Bienvenido</span>
+
+                <div id="cont-mute-responsive">
+                    <MuteButton></MuteButton>
+                </div>
                 
                 <div
                     id="nav-links"
@@ -62,7 +68,7 @@ const NavBar = () => {
 
                     <Button onClick={() => deslizarPantalla("sobre-mi-container")}>
                         <div className="inner-button">
-                            Sobre mi <IconChevronsDown size={24} stroke={1.5} />
+                            Sobre mí <IconChevronsDown size={24} stroke={1.5} />
                         </div>
                     </Button>
 

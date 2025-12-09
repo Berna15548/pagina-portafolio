@@ -20,7 +20,7 @@ const Inicio = () => {
             <div id="div-background-inicio" >
 
                 <p >
-                    Estimados saludos, soy Werner Lange y me dedico a la programación tanto en front como backend
+                    Bienvenido, soy Werner Lange y me dedico a la programación tanto en front como backend
                 </p>
 
                 <BadgesInicio></BadgesInicio>
