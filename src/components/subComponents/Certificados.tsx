@@ -5,12 +5,11 @@ import { SlControlRewind, SlControlForward } from "react-icons/sl";
 import CustomPointerWrapper from "../Canvas/CustomPointerWrapper.tsx";
 
 const cardsData = [
-    { title: "Lic en adm", image: "https://www.educativa.com/wp-content/uploads/2020/09/certificado-ejemplo_-1024x698.jpg" },
-    { title: "Cert curso programación", image: "https://www.educativa.com/wp-content/uploads/2020/09/certificado-01-1.jpg" },
-    { title: "Cert Excel", image: "https://www.argentina.gob.ar/sites/default/files/certificado_de_desplazamiento_al_lugar_de_trabajo.jpg" },
-    { title: "Cert curso fontan", image: "https://digitalchubut.com/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-07-at-17.09.04.jpeg" },
-    { title: "Algún cert de Australia", image: "https://edit.org/img/blog/n/jdi-1024-disenos-editables-para-diplomas-y-certificados.webp" },
-    { title: "IELTS", image: "https://www.lu4aa.org/wp/wp-content/uploads/2017/05/cert-tpa.jpg" },
+    { title: "Certificado de Programador", image: "https://i.ibb.co/KccDk5xQ/certificado-programador-1-2.jpg" },
+    { title: "Curso Análisis y Procesamiento de Datos", image: "https://i.ibb.co/k2rwdvvc/analisis-de-datos.jpg" },
+    { title: "Curso Plan de Negocios", image: "https://i.ibb.co/m5wWQypS/plan-de-negocios.jpg" },
+    { title: "Curso de Armado y Reparación de PC", image: "https://i.ibb.co/k6VWG6xv/armado-y-reparacion-de-pc.jpg" },
+    { title: "Curso de Primeros Auxilios", image: "https://i.ibb.co/sp9wjBtM/certificado-primeros-auxilios.jpg" },
 ];
 
 const Certificados = () => {
@@ -18,7 +17,7 @@ const Certificados = () => {
     const [direction, setDirection] = useState(0);
     const [modalCard, setModalCard] = useState<number | null>(null);
 
-    const dragStartX = useRef(0); // para controlar drag vs click
+    const dragStartX = useRef(0);
 
     useEffect(() => {
         cardsData.forEach(card => {

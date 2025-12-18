@@ -132,7 +132,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 0 0 calc(25%); // le da un máximo de elementos 4 por fila
+    flex: 0 0 calc(25%);
     height: 50px;
     border-radius: 12px;
     backdrop-filter: blur(3px);
@@ -503,7 +503,7 @@
     display: block;
     width: 100%;
     min-height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   .info {

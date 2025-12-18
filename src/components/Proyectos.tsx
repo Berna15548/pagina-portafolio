@@ -60,7 +60,7 @@ const Proyectos = () => {
             description: `Trabajo colaborativo en el desarrollo de una app de generación de curriculums personales de forma sensilla, con diseño responsivo para PC y móbiles. Cuenta con su propia base de datos, almacenamiento de imagenes en la nube, varias plantillas seleccionables y descarga en PDF.
 
                         -React, Boostrap, MySql, Maven, SpringBoot, HTML5, Typescript, Javascript.`,
-            img: "https://i.ibb.co/yKbw8SN/app-Curriculums.webp",
+            img: "https://i.ibb.co/DDNtQ4z5/app-Curriculums.webp",
         },
         {
             title: "Sitio Web de Juguetería",
@@ -68,7 +68,7 @@ const Proyectos = () => {
             description: `Mockup de una página web que sirva como plataforma de ventas para una empresa de juguetería. Cuenta con una base de datos alojada en Firebase de forma gratuita, registro y autentificación de usuarios y panel de administración con autorización por roles asignados desde la DB.
 
                         -Angular, Firebase, Scss, Angular Material, Typescript, HTML5.`,
-            img: "https://i.ibb.co/Jjq3jTVY/jugueteria.webp",
+            img: "https://i.ibb.co/wr7MzFQF/jugueteria.webp",
         },
         {
             title: "Librería Online",
@@ -77,7 +77,7 @@ const Proyectos = () => {
                             Incluye una hoja de productos para poblar la DB desde el panel de administración.
                             
                             -React, MySql, Boostrap, HTML5, Typescript, Maven, SpringBoot.`,
-            img: "https://i.ibb.co/SD2FC8nx/libreria.webp",
+            img: "https://i.ibb.co/QFZ4jB36/libreria.webp",
         },
     ];
 
