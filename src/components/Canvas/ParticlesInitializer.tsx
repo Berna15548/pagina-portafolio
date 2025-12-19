@@ -4,6 +4,7 @@ import { loadSlim } from "@tsparticles/slim";
 
 const ParticlesInitializer = () => {
     
+    // @ts-ignore
     const [init, setInit] = useState(false);
 
     useEffect(() => {
